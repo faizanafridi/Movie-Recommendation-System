@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    {% if genresList|length>2 %}
+
+    <center>
+        <h3>Related Movies</h3>
+    </center>
+    {% for movieGenre in genresList%}
+    {% if movieGenre['poster_path'] != "not available" %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{movieGenre['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~movieGenre['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{movieGenre['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endfor %}
+    {% endif %}
+</div>
+<div id="r" class="row">
+    {% if data!=" " %}
+
+    <center>
+        <h3>Related Movies</h3>
+    </center>
+    {% for dict in data %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{dict['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~dict['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{dict['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="row">
+
+    {% if tmdbIds|length > 1 %}
+
+    <center>
+        <h3>Recommending Movies Based on What You Like </h3>
+    </center>
+    {% for i in range(0,10) %}
+       {% if tmdbTitles[i] %}
+        <div onclick=recommendcard(this) class="col-sm-2" id={{tmdbIds[i]}}>
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="" src="{{ tmdbPosters[i] }}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ tmdbTitles[i]}}</h5>
+                    </h5>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="row">
+    {% if dailyTrending|length>1 %}
+
+    <center>
+        <h3>Today Trending</h3>
+    </center>
+    {% for daily in dailyTrending %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{daily['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" id="1" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~daily['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{daily['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="row">
+
+    {% if weeklyTrending|length>1 %}
+
+    <center>
+        <h3>WeeklyTrending</h3>
+    </center>
+    {% for weekly in dailyTrending %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{weekly['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" id="1" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~weekly['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{weekly['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="row">
+
+    {% if topRatedMovies|length>1 %}
+
+    <center>
+        <h3>Top Rated Movies</h3>
+    </center>
+    {% for topRated in topRatedMovies %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{topRated['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" id="1" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~topRated['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{topRated['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="row">
+
+    {% if popularMovies|length>1 %}
+
+    <center>
+        <h3>popularMovies</h3>
+    </center>
+    {% for popular in popularMovies %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{popular['id']}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" id="1" height="360" width="240" alt=""
+                    src="{{'https://image.tmdb.org/t/p/original'~ popular['poster_path']}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{popular['title']}}</h5>
+                </h5>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+center{
+    font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: black;
+    font-weight: bold;
+    margin-top: 30px;
+    text-shadow: #000000 0px 0px 13px;
+ }
+
+ .col-sm-2{
+
+    border-radius: 20px;
+    /*padding: 30px;*/
+    margin: 30px;
+ }
+ img{
+    border-radius: 20px 20px 0px 0px;
+
+ }
+
+ .r {
+    position: relative; 
+} /*MUST BE ABSOLUTE TO STACKED*/
+.rating, .transparent { 
+    position: absolute; 
+} 
+.rating { 
+    z-index: 1; 
+} 
+.star { 
+    background: url("../static/star.png"); 
+    cursor: pointer; float: left !important; /*KEEPS THE STAR NEXT TO EACH OTHER*/ 
+    height: 20px; width: 20px; 
+}
+.transparent .star {
+    opacity: .25; /*BASE STARS ARE TRANSPARENT UNTIL MOUSEOVER*/ 
+} 
+.rating .star { 
+    opacity: 1.0; /*CURRENT RATING IS VISIBLE UNTIL MOUSEOVER*/ 
+} 
+.votes { 
+    float: left; /*KEEPS THE NUMBER OF VOTES NEXT TO THE RATING & BASE*/
+}
+

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+
+
+    <center>
+        <h3>Rated Movies</h3>
+    </center>
+    {% for i in range(0,userRatings|length)  %}
+    <div onclick=recommendcard(this) class="col-sm-2" id={{userRatings[i].movieId}}>
+        <div class="castcard card" style="width: 15rem;" title="">
+            <div class="imghvr">
+                <img class="card-img-top cast-img" height="360" width="240" alt="" src="{{posters[i]}}">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{titles[i]}}</h5>
+                <div id="ajax_vote">
+                    <div class="r">
+                        <div class="rating">
+                            {% for i in range(1,userRatings[i].rating+1) %}
+                            <div class="star" id="{{i}}"></div>
+
+                            {% endfor %}
+
+                        </div>
+                        </h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

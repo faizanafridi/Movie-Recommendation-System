@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="results">
+    <center>
+        <h2 id="movieTitle" class="text-uppercase">{{title}}</h2>
+    </center>
+</div>
+<div id="content">
+    <div id="movieContent">
+        <div class="row">
+            <div class="col-sm-4 poster-lg">
+                <img class="poster" style="border-radius: 40px;margin-left: 90px;" height="400" width="250"
+                    src={{poster}}>
+            </div>
+
+            <div class="col-sm-8" :id="movieDetails">
+                <br />
+                <h5 id="title" style="color:black;">TITLE:<br>{{title}} </h5>
+                <h6 id="overview" style="color:black;max-width: 85%">OVERVIEW:
+                    <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{overview}}
+                </h6>
+
+                <h6 id="vote_average" style="color:black;">RATING: &nbsp;{{vote_average}}/10 ({{vote_count}} votes)
+                </h6>
+
+                <h6 id="genres" style="color:black;">GENRE: {% for dict in genres %}&nbsp;{{dict['name']}} {% endfor
+                    %}</h6>
+
+                <h6 id="date" style="color:black;">RELEASE DATE: &nbsp;{{release_date}}</h6>
+                <h6 id="runtime" style="color:black;">RUNTIME: &nbsp;{{runtime}}</h6>
+                <h6 id="status" style="color:black">STATUS: &nbsp;{{status}}</h6>
+                <input type="hidden" name="movieID" id="movieID" value="{{movieI}}" />
+                {% if current_user.is_authenticated %}
+                <div id="ajax_vote">
+                    <div class="r">
+                        <div class="transparent">
+                            <h6>Rate Movie:</h6>
+                            <div class="star" id="1"></div>
+                            <div class="star" id="2"></div>
+                            <div class="star" id="3"></div>
+                            <div class="star" id="4"></div>
+                            <div class="star" id="5"></div>
+
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<div style="margin-left:450px" class="row">
+    <div class="input-group">
+        <div class="col-xs-2">
+
+            <input class="form-control col-sm-1">
+        </div>
+        <div>
+            <span class="input-group-btn">
+                <button class='btn btn-info'>Rate</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+<br />
+<div class="movie" style="color: black;">
+    <center>
+        <h3>TOP CAST</h3>
+    </center>
+</div>
+
+<div class="topCast">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="castcard card" style="width: 15rem;" title="">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" id="1" height="360" width="240" alt="{{name}} - profile"
+                        src="1.jpg">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Sean Bean</h5>
+                    <h5 class="card-title"><span style="color:#756969;font-size: 20px;">Character: Odysseus</span>
+                    </h5>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<center>
+    <div id="reviews">
+        <h2 style="color:black">USER REVIEWS</h2>
+        <div class="col-md-12" style="margin: 0 auto; margin-top:25px;">
+            <table class="table table-bordered" bordercolor="black" style="color:black">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col" style="width: 75%">Review</th>
+                        <th class="text-center" scope="col">Sentiment</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for review, status in reviews.items() if not reviews.hidden %}
+                    <tr style="background-color:#e5091485;">
+                        <td>{{review}}</td>
+                        <td>
+                            <center>
+                                {{status}} :
+                                {% if status =='Good' %}
+                                &#128515;
+                                {% else %}
+                                &#128534;
+                                {% endif %}
+                            </center>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</center>
+
+<!--    <div>-->
+<!--         {% for p in recommended_movie_names %}-->
+<!--        <h3>{{p}}</h3>-->
+<!--        {% endfor %}-->
+<!--    </div>-->
+
+<div class="recommendedMovies">
+    <div class="row">
+        {% if recommended_movie_ids|length > 1 %}
+        <center>
+            <h3>Recommended Movies</h3>
+        </center>
+        {% for i in range(0,5) %}
+        <div class="col-sm-2" onclick=recommendcard(this) id={{ recommended_movie_ids[i] }}>
+            <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}">
+                <div class="imghvr">
+                    <img class="card-img-top cast-img" height="360" width="240" alt="{{name}} - profile"
+                        src={{recommended_movie_posters[i] }}>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ recommended_movie_names[i] }}</h5>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <center>
+            <h4>Cant Show Recommendation as the movie is not present in our database</h4>
+        </center>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}
